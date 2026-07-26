@@ -1,2 +1,7 @@
 Flask
 pytest
+pandas
+numpy
+matplotlib
+seaborn
+requests
