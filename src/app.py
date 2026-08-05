@@ -15,7 +15,7 @@ app = Flask(__name__,
             static_folder='../static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@host.docker.internal/ibm_elytespark'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = "ibm_churn_project_secret_key"
+app.secret_key = os.environ.get("SECRET_KEY")
 db = SQLAlchemy(app)
 
 class ibm_employee(db.Model):
