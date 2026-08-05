@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/post-bg.jpg') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>Understanding Customer Churn in Telecom</h1>
+                    <h2 class="subheading">A data-driven approach to predicting customer retention</h2>
+                    <span class="meta">
+                        Posted as part of the
+                        <a href="#!">IBM Telco Churn Analysis Project</a>
+                        on August 05, 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+
+                <p>
+                    Customer churn is one of the most important metrics in the telecommunications industry.
+                    It represents the percentage of customers who stop using a company’s services over a
+                    given period of time. High churn rates can significantly impact revenue and long-term growth.
+                </p>
+
+                <p>
+                    In this project, we analyzed the IBM Telco Customer dataset to identify the key factors
+                    that influence whether a customer is likely to leave or stay. The dataset contains
+                    information about customer demographics, account details, and the services they have subscribed to.
+                </p>
+
+                <h2 class="section-heading">Why Churn Prediction Matters</h2>
+                <p>
+                    Acquiring a new customer is generally much more expensive than retaining an existing one.
+                    By predicting which customers are at risk of churning, companies can take proactive actions
+                    such as offering personalized discounts, improving service quality, or providing better support.
+                </p>
+
+                <p>
+                    Through exploratory data analysis, we observed that factors such as contract type,
+                    tenure, monthly charges, and the presence of additional services (like tech support or
+                    online security) play a major role in customer retention.
+                </p>
+
+                <h2 class="section-heading">Machine Learning Approach</h2>
+                <p>
+                    Multiple machine learning models were trained to predict churn, including
+                    Random Forest, XGBoost, Logistic Regression, and Naive Bayes.
+                    Since the dataset was imbalanced, SMOTEENN was used to improve the model’s ability
+                    to correctly identify customers who are likely to churn.
+                </p>
+
+                <p>
+                    After evaluating the models, the best-performing ones were saved and integrated
+                    into this web application. Users can now input customer details, select a model,
+                    and receive a real-time prediction.
+                </p>
+
+                <h2 class="section-heading">Key Insights</h2>
+                <p>
+                    Customers with month-to-month contracts and higher monthly charges tend to have
+                    a higher chance of churning. On the other hand, customers with longer contracts
+                    and longer tenure are more likely to stay with the company.
+                </p>
+
+                <p>
+                    This project demonstrates how data analysis and machine learning can be combined
+                    to create a practical tool that supports better business decisions in the telecom sector.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+{% endblock %}

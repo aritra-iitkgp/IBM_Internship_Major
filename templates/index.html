@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+<!-- Page Header-->
+{% block body %}
+
+
+<header class="masthead" style="background-image: url('{{url_for('static',filename='assets/img/bg_image.jpeg' )}}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>IBM Telecom Churn Prediction</h1>
+                    <span class="subheading">Machine Learning Based prediction of IBM Telecom customer churn </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="{{url_for('intro')}}#introduction">
+                    <h2 class="post-title">Customer churn is the percentage of customers who discontinue their
+                        relationship with a product or service over a specific period</h2>
+                    <h3 class="post-subtitle">Monitoring churn is essential for businesses, as it directly influences
+                        revenue growth, profitability, and long-term brand reputation</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Azam Bukhari</a>
+                    on Apr 8, 2023
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+
+            <div class="post-preview">
+                <a href="{{url_for('intro')}}#description">
+                    <h2 class="post-title">Q3 (quarter-3) data of a fictional telco company that provided home phone and
+                        Internet services to 7043 customers in California, USA.</h2>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Azam Bukhari</a>
+                    on Apr 8, 2023
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+
+            <div class="post-preview">
+                <a href="{{url_for('intro')}}#seniorcitizen">
+                    <h2 class="post-title">It’s observed that the proportion of churn and retain customers among senior
+                        citizens and non-senior citizens is nearly equal.</h2>
+                    <h3 class="post-subtitle">One very interesting social insight and discovery about our data is that
+                        female customers without dependents are more likely to churn than male customers with dependents
+                    </h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Azam Bukhari</a>
+                    on Apr 8, 2023
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+
+            <div class="post-preview">
+                <a href="{{url_for('intro')}}#post-preview">
+                    <h2 class="post-title">The article suggests several strategies for reducing customer churn,
+                        including improving customer service, offering incentives to loyal customers, providing better
+                        product features, and regularly engaging with customers.</h2>
+                    <h3 class="post-subtitle"></h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Azam Bukhari</a>
+                    on Apr 8, 2023
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts
+                    →</a></div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
