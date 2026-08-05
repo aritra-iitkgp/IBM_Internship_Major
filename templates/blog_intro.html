@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<header class="masthead" style="background-image: url('{{url_for('static',filename='assets/img/blog_image.webp' )}}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>IBM Telecom Churn Prediction</h1>
+                    <span class="subheading">Machine Learning Based prediction of IBM Telecom customer churn </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h2 id="introduction" class="section-heading">Introduction</h2>
+                <p>
+                    Customer churn refers to the rate at which customers stop using a product or service.
+                    It is a critical business metric because high churn can significantly affect revenue,
+                    profitability, and brand reputation.
+                </p>
+                <h2 id="description" class="section-heading">Dataset Description</h2>
+                <p>
+                    In the telecommunications industry, understanding why customers leave is essential
+                    for designing effective retention strategies. This analysis explores the IBM Telco
+                    customer dataset to uncover key patterns and drivers of churn.
+                </p>
+
+                <h2 id="seniorcitizen" class="section-heading">Are senior citizens more prone to churn?</h2>
+                <p>
+                    Acquiring new customers is significantly more expensive than retaining existing ones.
+                    By identifying customers who are likely to churn, companies can take proactive measures
+                    such as personalized offers, improved service quality, or targeted support.
+                </p>
+
+                <p>
+                    Through exploratory data analysis and machine learning models, we aim to answer
+                    important questions such as:
+                </p>
+
+                <ul>
+                    <li>Which customer segments have the highest churn rate?</li>
+                    <li>What services are most associated with customer retention?</li>
+                    <li>How do contract type, tenure, and monthly charges influence churn?</li>
+                </ul>
+
+                <h2 id="dataset_overview" class="section-heading">Dataset Overview</h2>
+                <p>
+                    The IBM Telco Customer Churn dataset contains information about customer demographics,
+                    account details, and the services they have subscribed to. The target variable indicates
+                    whether a customer has churned or not.
+                </p>
+
+                <!-- You can later add images here -->
+                <!-- 
+                <img src="{{ url_for('static', filename='assets/img/churn-chart1.png') }}" 
+                     class="img-fluid" alt="Churn Distribution">
+                -->
+
+                <h2 class="section-heading">Key Insights</h2>
+                <p>
+                    Initial analysis reveals that customers with month-to-month contracts,
+                    higher monthly charges, and shorter tenure are more likely to churn.
+                    Additionally, the absence of certain add-on services also appears to increase
+                    the probability of leaving.
+                </p>
+
+                <p>
+                    In the following sections, we will explore these patterns in more detail
+                    using visualizations and predictive modeling techniques.
+                </p>
+
+                <hr class="my-4" />
+
+                <p>
+                    This study forms part of a larger machine learning project focused on
+                    building an end-to-end customer churn prediction system.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+{% endblock body %}
