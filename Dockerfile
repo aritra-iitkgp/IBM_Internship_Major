@@ -14,12 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Expose the port Flask will run on
-EXPOSE 5000
+EXPOSE 10000
 
 # Set environment variables
 ENV FLASK_APP=src/app.py
 ENV FLASK_ENV=production
 
 # Run the application
-CMD ["python", "src/app.py"]
-#CMD ["gunicorn", "--bind", "0.0.0.0:5000", "src.app:app"]
+#CMD ["python", "src/app.py"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-10000} src.app:app"]
