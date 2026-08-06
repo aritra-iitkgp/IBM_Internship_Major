@@ -8,14 +8,14 @@ from sklearn.metrics import accuracy_score
 
 def test_data_file_exists():
     """Check if the dataset file exists"""
-    assert os.path.exists("../Files/Data/Telco-Customer-Churn.csv") or True  
+    assert os.path.exists("Files/Data/Telco-Customer-Churn.csv") 
     
 
 
 def test_data_loading():
     """Test if data loads correctly and has expected structure"""
     
-    df = pd.read_csv("../Files/Data/Telco-Customer-Churn.csv")  # update path
+    df = pd.read_csv("Files/Data/Telco-Customer-Churn.csv")  # update path
     
     assert isinstance(df, pd.DataFrame)
     assert df.shape[0] > 0
@@ -24,13 +24,13 @@ def test_data_loading():
 
 
 def test_no_duplicate_columns():
-    df = pd.read_csv("../Files/Data/Telco-Customer-Churn.csv")
+    df = pd.read_csv("Files/Data/Telco-Customer-Churn.csv")
     assert df.columns.duplicated().sum() == 0
 
 
 def test_churn_column_values():
     """Churn should normally contain 0 and 1 (or Yes/No)"""
-    df = pd.read_csv("../Files/Data/Telco-Customer-Churn.csv")
+    df = pd.read_csv("Files/Data/Telco-Customer-Churn.csv")
     unique_values = df["Churn"].nunique()
     assert unique_values >= 2
 
@@ -38,11 +38,11 @@ def test_churn_column_values():
 
 
 def test_model_columns_file_exists():
-    assert os.path.exists("../models/model_columns.pkl")
+    assert os.path.exists("models/model_columns.pkl")
 
 
 def test_model_columns_loading():
-    with open("../models/model_columns.pkl", "rb") as f:
+    with open("models/model_columns.pkl", "rb") as f:
         model_columns = pickle.load(f)
     
     assert isinstance(model_columns, list)
@@ -54,12 +54,12 @@ def test_model_columns_loading():
 
 def test_model_files_exist():
     model_files = [
-        "../models/model_xgb.sav",
-        "../models/best_xgb.sav",
-        "../models/model_rf_smote.sav",
-        "../models/best_rf.sav",
-        "../models/model_lr.sav",
-        "../models/model_nb.sav"
+        "models/model_xgb.sav",
+        "models/best_xgb.sav",
+        "models/model_rf_smote.sav",
+        "models/best_rf.sav",
+        "models/model_lr.sav",
+        "models/model_nb.sav"
     ]
     
     for model_file in model_files:
@@ -70,7 +70,7 @@ def test_model_loading_and_prediction():
     """Test if a model can be loaded and can make a prediction"""
     
     # Load column order
-    with open("../models/model_columns.pkl", "rb") as f:
+    with open("models/model_columns.pkl", "rb") as f:
         model_columns = pickle.load(f)
     
     # Create a dummy input matching the column structure
@@ -81,7 +81,7 @@ def test_model_loading_and_prediction():
     )
     
     # Test with one model (XGBoost)
-    with open("../models/model_xgb.sav", "rb") as f:
+    with open("models/model_xgb.sav", "rb") as f:
         model = pickle.load(f)
     
     prediction = model.predict(dummy_input)
@@ -94,7 +94,7 @@ def test_model_loading_and_prediction():
 def test_multiple_models_prediction():
     """Test prediction with multiple models"""
     
-    with open("../models/model_columns.pkl", "rb") as f:
+    with open("models/model_columns.pkl", "rb") as f:
         model_columns = pickle.load(f)
     
     dummy_input = pd.DataFrame(
@@ -103,10 +103,10 @@ def test_multiple_models_prediction():
     )
     
     models_to_test = [
-        "../models/model_xgb.sav",
-        "../models/model_rf_smote.sav",
-        "../models/model_lr.sav",
-        "../models/model_nb.sav"
+        "models/model_xgb.sav",
+        "models/model_rf_smote.sav",
+        "models/model_lr.sav",
+        "models/model_nb.sav"
     ]
     
     for model_path in models_to_test:
