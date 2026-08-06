@@ -17,8 +17,10 @@ database_url = os.environ.get("DATABASE_URL")
 
 if database_url and database_url.startswith("postgres://"):
     database_url = database_url.replace("postgres://", "postgresql://", 1)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
-#app.config['SQLALCHEMY_DATABASE_URI'] = database_url or'mysql+pymysql://root:@host.docker.internal/ibm_elytespark'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@host.docker.internal/ibm_elytespark'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = os.environ.get("SECRET_KEY")
 db = SQLAlchemy(app)
@@ -29,8 +31,12 @@ class ibm_employee(db.Model):
     Email = db.Column(db.String(50),nullable=False,unique=True)
     Password = db.Column(db.String(50),nullable=False)
     Datetime = db.Column(db.DateTime,default=lambda:datetime.now(timezone.utc),nullable=False)
-with open("./src/config.json",'r') as f:
+base_dir = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(base_dir, "config.json"), 'r') as f:
     param = json.load(f)['contents']
+
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def home():
@@ -76,7 +82,9 @@ def signin():
 @app.route("/post",methods=["GET","POST"])
 def post():
     return render_template('post.html',params=param)
-
+@app.route("/about",methods=["GET","POST"])
+def about():
+    return render_template('about.html',params=param)
 @app.route("/contact", methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
@@ -160,7 +168,7 @@ def ml_model():
         input_encoded = pd.get_dummies(input_df)
 
         # Load saved column order
-        with open("../models/model_columns.pkl", "rb") as f:
+        with open("models/model_columns.pkl", "rb") as f:
             model_columns = pickle.load(f)
 
         # Match training columns
@@ -168,7 +176,7 @@ def ml_model():
 
         # Load selected model
         selected_model = request.form.get('model_name')
-        model_path = f"../models/{selected_model}"
+        model_path = f"models/{selected_model}"
 
         with open(model_path, "rb") as f:
             model = pickle.load(f)
