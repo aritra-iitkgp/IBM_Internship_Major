@@ -38,6 +38,11 @@ with open(os.path.join(base_dir, "config.json"), 'r') as f:
 with app.app_context():
     db.create_all()
 
+@app.route("/create-tables")
+def create_tables():
+    db.create_all()
+    return "Tables created"
+
 @app.route("/")
 def home():
     return render_template('index.html',params=param)
