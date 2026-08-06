@@ -120,7 +120,7 @@ def contact():
         try:
             # Gmail SMTP example
             print("Connecting to Gmail SMTP...")
-            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server = smtplib.SMTP('smtp.gmail.com', 587,timeout=20)
             server.starttls()
             print("Logging in...")
             server.login(os.environ.get('EMAIL_ADDRESS'), os.environ.get('EMAIL_PASSWORD'))  # Use App Password
